@@ -140,12 +140,13 @@ def room_one(player):
                     attacking = False
                 else:
                     attack_attack(spider, player)
-                    if player.hitpoints == 0:
+                    if player.hitpoints <= 0:
                         Game_Over("dead")
             else:
                 Game_Over("flee")
 
-        print "You've killed the spider."
+        print "You've killed the spider.\n"
+        player.playerStatus()
         player.clearRoom(1)
         print "There is a door to the east, a door to the south, and a door to the west."
         notOkay = True
@@ -229,7 +230,7 @@ def room_three(player):
                     attacking = False
                 else:
                     attack_attack(skeleton, player)
-                    if player.hitpoints == 0:
+                    if player.hitpoints <= 0:
                         Game_Over("dead")
             else:
                 Game_Over("flee")
@@ -286,11 +287,11 @@ def room_four(player):
 
         while attacking:
             fightStatus(player, monster)
+            outcome = actions()
             attack_attack(monster, player)
-            if player.hitpoints == 0:
+            if player.hitpoints <= 0:
                 Game_Over("dead")
             else:
-                outcome = actions()
                 if outcome == "attack":
                     attack_attack(player, monster)
                     if monster.hitpoints <= 0:
@@ -298,7 +299,8 @@ def room_four(player):
                 else:
                     Game_Over("flee")
 
-        print "You've killed the %s." % monster.name
+        print "You've killed the %s.\n" % monster.name
+        player.playerStatus()
         player.clearRoom(4)
 
     else:
@@ -360,7 +362,50 @@ def room_five(player):
         print "You stumble around the dark room."
 
 def room_boss(player):
-    print "\nBoss kills you immediately cus I said so."
+    print "\nYou enter a large, dark room."
+    next = raw_input()
+    print "One by one the torches on on the walls begin to light around the room."
+    print "A giant, green, cobra breaks through the floor!!"
+    print "##### BOSS #####"
+    print "## KING KOBRA ##"
+    print "################"
+
+    boss = Boss()
+    attacking = True
+
+    while attacking:
+        fightStatus(player, boss)
+        outcome = actions()
+        attack_attack(boss, player)
+        if player.hitpoints <= 0:
+            Game_Over("dead")
+        else:
+            if outcome == "attack":
+                attack_attack(player, boss)
+                if boss.hitpoints <= 0:
+                    attacking = False
+            else:
+                print "Unable to flee!!!"
+
+    player.clearRoom(6)
+    print "\nYou've slain %s!" % boss.name
+    print "\nNow that the danger has passed, you notice a large pile"
+    print "of treasure on the other side of the room."
+    begin = raw_input()
+
+    if player.rooms[0] == 1 and player.rooms[2] == 1 and player.rooms[3] == 1:
+        print "You collect as much treasure as you can carry"
+        print "and exit the cave VICTORIOUS!"
+        print "Thanks for playing!"
+    else:
+        print "While you are busy collecting the treasure"
+        print "you don't notice a monster sneak up behind you."
+        print "It got ya. You dead."
+        print "Should have checked all the rooms."
+        print "GAME OVER!!!"
+
+
+
 
 
 player = Player()
