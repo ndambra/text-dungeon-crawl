@@ -5,8 +5,10 @@ This is my way of learning to code in Python. So, here is a simple little text b
 and learn the language.
 
 
-How to Run:
-## Check that you have Python 3 installed on your machine ##
+
+## How to Run: ##
+Check that you have Python 3 installed on your machine 
+
 Download the .py file to a dirctory on your computer.
 
 Open powershell/command line of choice
