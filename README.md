@@ -8,9 +8,15 @@ and learn the language.
 How to Run:
 ## Check that you have Python 3 installed on your machine ##
 > Download the .py file to a dirctory on your computer.
+
 > Open powershell/command line of choice
+
 > Navigate to the directory your file is in 
+  
   ex. $ cd <file-path>
+  
 > run the program
+  
   ex. $ python TextDungeonCrawl.py
+  
 > Play the Game!!
