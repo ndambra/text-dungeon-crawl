@@ -1,0 +1,15 @@
+$def with (name, player)
+
+$if name:
+    Welcome, <em>$name</em>!!
+$else:
+    Welcome, Player!
+
+$if player:
+    <br/>
+    $player.get_status()
+
+<form action="/game" method="GET">
+    <input type="submit" value="Start Game">
+</form>
+
